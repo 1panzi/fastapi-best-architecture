@@ -28,6 +28,7 @@ from backend.database.redis import redis_client
 from backend.middleware.access_middleware import AccessMiddleware
 from backend.middleware.i18n_middleware import I18nMiddleware
 from backend.middleware.jwt_auth_middleware import JwtAuthMiddleware
+from backend.plugin.api_key.middleware import JwtApiKeyAuthMiddleware
 from backend.middleware.opera_log_middleware import OperaLogMiddleware
 from backend.middleware.state_middleware import StateMiddleware
 from backend.plugin.core import build_final_router
@@ -139,10 +140,16 @@ def register_middleware(app: FastAPI) -> None:
     app.add_middleware(StateMiddleware)
 
     # JWT auth
+    # app.add_middleware(
+    #     AuthenticationMiddleware,
+    #     backend=JwtAuthMiddleware(),
+    #     on_error=JwtAuthMiddleware.auth_exception_handler,
+    # )
+    #使用api-key插件
     app.add_middleware(
         AuthenticationMiddleware,
-        backend=JwtAuthMiddleware(),
-        on_error=JwtAuthMiddleware.auth_exception_handler,
+        backend=JwtApiKeyAuthMiddleware(),
+        on_error=JwtApiKeyAuthMiddleware.auth_exception_handler,
     )
 
     # I18n

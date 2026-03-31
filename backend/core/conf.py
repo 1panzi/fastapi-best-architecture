@@ -305,6 +305,13 @@ class Settings(BaseSettings):
     EMAIL_USERNAME: str
     EMAIL_PASSWORD: str
 
+
+    ##################################################
+    # [ Plugin ] api_key
+    ##################################################
+    # 基础配置
+    API_KEY_GENERATE_PREFIX: str = 'fba-'
+
     # 基础配置（in plugin.toml）
     EMAIL_HOST: str
     EMAIL_PORT: int
