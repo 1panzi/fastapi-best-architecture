@@ -1,0 +1,14 @@
+[plugin]
+summary = 'AI'
+version = '0.0.3'
+description = '为系统提供 AI 赋能'
+author = 'wu-clan'
+tags = ['ai', 'mcp', 'agent']
+database = ['mysql', 'postgresql']
+
+[app]
+router = ['v1']
+
+[settings]
+AI_HTTP_MAX_RETRIES = 5
+AI_CHAT_MAX_RETRIES = 5
