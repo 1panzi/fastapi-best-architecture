@@ -255,7 +255,7 @@ services:
         supervisorctl restart
 
   fba_celery_exporter:
-    image: danihodovic/celery-exporter
+    image: danihodovic/celery-exporter:latest
     restart: always
     ports:
       - "${DOCKER_MAP_CELERY_EXPORTER_PORT:-9808}:9808"
@@ -278,7 +278,7 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
 
   fba_prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v3.9.1
     restart: always
     ports:
       - "${DOCKER_MAP_PROMETHEUS_PORT:-9090}:9090"
@@ -296,7 +296,7 @@ services:
       - --config.file=/workspace/fba_prometheus.yml
 
   fba_alloy:
-    image: grafana/alloy
+    image: grafana/alloy:v1.9.2
     restart: always
     ports:
       - "${DOCKER_MAP_ALLOY_GRPC_PORT:-4317}:4317"
